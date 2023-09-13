@@ -1,6 +1,6 @@
 import { ITabs } from '../../../../../../@types/form';
 import { usePoem } from '../../../../../../hooks/poem';
-import { Tab, TabsContainer } from './styles';
+import { IconContainer, Tab, TabsContainer } from './styles';
 
 interface IFormTabs {
     tabs: ITabs[];
@@ -22,7 +22,10 @@ export function FormTabs({ tabs }: IFormTabs) {
                         }
                         defaultChecked={stepIndex === tab.value}
                     />
-                    <span>{tab.label}</span>
+                    <span>
+                        {tab.icon && <IconContainer>{tab.icon}</IconContainer>}
+                        {tab.label}
+                    </span>
                 </Tab>
             ))}
         </TabsContainer>

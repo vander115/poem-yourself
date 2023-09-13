@@ -3,16 +3,19 @@ import {
     ReactNode,
     SetStateAction,
     createContext,
+    useCallback,
     useContext,
     useMemo,
     useState,
 } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { BackgroundType, IBackground } from '../@types/form';
 
 interface IThemeContext {
-    backgroundColor: string;
-    setBackgroundColor: Dispatch<SetStateAction<string>>;
+    background: IBackground;
     theme: any;
+    setBackground: Dispatch<SetStateAction<IBackground>>;
+    changeBackgroundType: (newType: BackgroundType) => void;
 }
 
 interface IThemeProviderProps {
@@ -28,7 +31,17 @@ const palette = {
 const ThemeContext = createContext<IThemeContext>({} as IThemeContext);
 
 export function ThemeContextProvider({ children }: IThemeProviderProps) {
-    const [backgroundColor, setBackgroundColor] = useState('#fff');
+    const [background, setBackground] = useState<IBackground>({
+        type: 'solid',
+        color: palette.gray300,
+    });
+
+    const changeBackgroundType = useCallback((newType: BackgroundType) => {
+        setBackground((state) => ({
+            ...state,
+            type: newType as BackgroundType,
+        }));
+    }, []);
 
     const theme = useMemo(
         () => ({
@@ -47,19 +60,20 @@ export function ThemeContextProvider({ children }: IThemeProviderProps) {
             },
 
             poem: {
-                background: backgroundColor,
+                background: background,
             },
         }),
-        [backgroundColor],
+        [background],
     );
 
     const value = useMemo(
         () => ({
-            backgroundColor,
-            setBackgroundColor,
             theme,
+            background,
+            setBackground,
+            changeBackgroundType,
         }),
-        [backgroundColor, setBackgroundColor],
+        [theme, background, setBackground, changeBackgroundType],
     );
 
     return (

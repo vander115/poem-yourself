@@ -19,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
   transition: all 0.2s ease !important;
 }
 
-h1, h2, h3, p {
-
+svg {
+  transition: all 0.005s ease !important;
 }
 
 input, textarea, button {

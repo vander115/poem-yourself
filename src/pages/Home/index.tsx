@@ -1,8 +1,8 @@
 import { useCallback, useRef } from 'react';
 import { toPng } from 'html-to-image';
 import { FormContainer, HomeContainer, TextContainer } from './styles';
-import { PoemForm } from './components/PoemForm';
-import { PoemBody } from './components/PoemBody';
+import { PoemForm } from './containers/PoemForm';
+import { PoemBody } from './containers/PoemBody';
 
 export function Home() {
     const domEl = useRef<HTMLDivElement>(null);

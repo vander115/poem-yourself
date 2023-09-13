@@ -12,6 +12,7 @@ export const Tab = styled.label`
     justify-content: center;
     align-items: center;
     padding: 0.35rem 0.35rem;
+    position: relative;
 
     input {
         display: none;
@@ -36,9 +37,27 @@ export const Tab = styled.label`
         align-items: center;
         justify-content: center;
         border-radius: 0.25rem;
+        gap: 0.25rem;
+        color: ${({ theme }) => theme.form.input.label};
     }
 
     & + label {
-        border-left: 1px solid gray;
+        &::before {
+            content: '';
+            position: absolute;
+            height: 70%;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            width: 2px;
+            border-radius: 3px;
+            background: ${({ theme }) => theme.form.input.border};
+        }
     }
+`;
+
+export const IconContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
