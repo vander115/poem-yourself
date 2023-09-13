@@ -1,20 +1,13 @@
-import { useCallback, useRef, useState } from 'react';
-import {
-    HomeContainer,
-    Text,
-    TextContainer,
-    TextContent,
-    TextTitle,
-} from './styles';
+import { useCallback, useRef } from 'react';
 import { toPng } from 'html-to-image';
+import { FormContainer, HomeContainer, TextContainer } from './styles';
+import { PoemForm } from './components/PoemForm';
+import { PoemBody } from './components/PoemBody';
 
 export function Home() {
-    const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
-
     const domEl = useRef<HTMLDivElement>(null);
 
-    const downloadImage = useCallback(async () => {
+    const handleDownloadImage = useCallback(async () => {
         if (domEl.current === null) {
             return;
         }
@@ -35,12 +28,12 @@ export function Home() {
 
     return (
         <HomeContainer>
-            <TextContainer>
-                <TextContent ref={domEl}>
-                    <TextTitle contentEditable>{title}</TextTitle>
-                    <Text contentEditable>{text}</Text>
-                </TextContent>
+            <TextContainer onClick={handleDownloadImage}>
+                <PoemBody ref={domEl} />
             </TextContainer>
+            <FormContainer>
+                <PoemForm />
+            </FormContainer>
         </HomeContainer>
     );
 }
