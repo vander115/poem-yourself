@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PoemFormContainer = styled.div`
     width: 30rem;
-    gap: 1rem;
+
     display: flex;
     flex-direction: column;
 
@@ -10,8 +10,22 @@ export const PoemFormContainer = styled.div`
     border-radius: 0.5rem;
 `;
 
-export const StepContainer = styled.div``;
+export const StepContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`;
 
 export const FormContent = styled.form`
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+`;
+
+export const ButtonsContainer = styled.div`
+    display: flex;
+    gap: 1rem;
 `;

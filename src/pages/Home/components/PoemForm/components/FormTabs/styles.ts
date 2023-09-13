@@ -17,6 +17,15 @@ export const Tab = styled.label`
         display: none;
     }
 
+    input[type='radio']:checked + span {
+        background-color: ${({ theme }) => theme.form.input.border};
+        color: ${({ theme }) => theme.white};
+    }
+
+    input[type='radio']:not(:checked) + span {
+        cursor: pointer;
+    }
+
     span {
         font-size: 1rem;
         font-weight: 500;

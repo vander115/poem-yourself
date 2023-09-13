@@ -7,7 +7,7 @@ interface IFormTabs {
 }
 
 export function FormTabs({ tabs }: IFormTabs) {
-    const { setStepIndex } = usePoem();
+    const { setStepIndex, stepIndex } = usePoem();
 
     return (
         <TabsContainer>
@@ -20,6 +20,7 @@ export function FormTabs({ tabs }: IFormTabs) {
                         onChange={(event) =>
                             setStepIndex(Number(event.target.value))
                         }
+                        defaultChecked={stepIndex === tab.value}
                     />
                     <span>{tab.label}</span>
                 </Tab>

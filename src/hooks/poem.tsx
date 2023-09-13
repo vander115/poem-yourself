@@ -8,13 +8,12 @@ import {
     useState,
     useCallback,
 } from 'react';
-import { StepIndexType } from '../@types/stepIndex';
 
 interface IPoemContext {
     title: string;
     text: string;
     paragraphs: string[];
-    stepIndex: StepIndexType;
+    stepIndex: number;
     transformText: (text: string) => void;
     setTitle: Dispatch<SetStateAction<string>>;
     setText: Dispatch<SetStateAction<string>>;

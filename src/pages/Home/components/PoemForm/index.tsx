@@ -1,8 +1,9 @@
 import { ITabs } from '../../../../@types/form';
+import { Button } from '../../../../components/Button';
 import { usePoem } from '../../../../hooks/poem';
 import { FormTabs } from './components/FormTabs';
 import { TextStep } from './steps/TextStep';
-import { FormContent, PoemFormContainer } from './styles';
+import { ButtonsContainer, FormContent, PoemFormContainer } from './styles';
 
 export function PoemForm() {
     const { stepIndex } = usePoem();
@@ -38,7 +39,12 @@ export function PoemForm() {
     return (
         <PoemFormContainer>
             <FormTabs tabs={tabs} />
-            <FormContent>{getSteps()}</FormContent>
+            <FormContent>
+                {getSteps()}
+                <ButtonsContainer>
+                    <Button label="Salvar" />
+                </ButtonsContainer>
+            </FormContent>
         </PoemFormContainer>
     );
 }
