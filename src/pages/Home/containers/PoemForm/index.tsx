@@ -13,7 +13,7 @@ import { ButtonsContainer, FormContent, PoemFormContainer } from './styles';
 import { ColorStep } from './steps/ColorStep';
 
 export function PoemForm() {
-    const { stepIndex } = usePoem();
+    const { stepIndex, handleDownloadImage } = usePoem();
 
     const getSteps = () => {
         switch (stepIndex) {
@@ -53,6 +53,7 @@ export function PoemForm() {
                 {getSteps()}
                 <ButtonsContainer>
                     <Button
+                        onClick={handleDownloadImage}
                         icon={<FloppyDiskBack size={24} />}
                         label="Salvar"
                     />

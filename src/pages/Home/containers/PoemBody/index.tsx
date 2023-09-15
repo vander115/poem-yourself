@@ -1,17 +1,15 @@
-import { HTMLAttributes, RefObject } from 'react';
+import { HTMLAttributes } from 'react';
 
 import { usePoem } from '../../../../hooks/poem';
 import { PoemBodyContainer, PoemParagraphs, PoemTitle } from './styles';
 
-interface IPoemBodyProps extends HTMLAttributes<HTMLDivElement> {
-    ref: RefObject<HTMLDivElement>;
-}
+interface IPoemBodyProps extends HTMLAttributes<HTMLDivElement> {}
 
-export function PoemBody({ ref, ...rest }: IPoemBodyProps) {
-    const { title, paragraphs } = usePoem();
+export function PoemBody({ ...rest }: IPoemBodyProps) {
+    const { title, paragraphs, poemRef } = usePoem();
 
     return (
-        <PoemBodyContainer ref={ref} {...rest}>
+        <PoemBodyContainer ref={poemRef} {...rest}>
             <PoemTitle>{title}</PoemTitle>
             <PoemParagraphs>
                 {paragraphs?.map((paragraph) => (

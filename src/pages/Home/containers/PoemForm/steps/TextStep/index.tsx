@@ -4,7 +4,8 @@ import { usePoem } from '../../../../../../hooks/poem';
 import { StepContainer } from '../../styles';
 
 export function TextStep() {
-    const { title, setTitle, text, setText, transformText } = usePoem();
+    const { title, setTitle, text, author, setAuthor, transformText } =
+        usePoem();
     return (
         <StepContainer>
             <Input
@@ -17,10 +18,13 @@ export function TextStep() {
                 name="text"
                 value={text}
                 label="Texto"
-                onChange={(event) => {
-                    setText(event?.target.value);
-                    transformText(event?.target.value);
-                }}
+                onChange={(event) => transformText(event?.target.value)}
+            />
+            <Input
+                name="author"
+                value={author}
+                label="Autor"
+                onChange={(event) => setAuthor(event?.target.value)}
             />
         </StepContainer>
     );

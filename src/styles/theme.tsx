@@ -9,7 +9,7 @@ import {
     useState,
 } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { BackgroundType, IBackground } from '../@types/form';
+import { BackgroundEnum, BackgroundType, IBackground } from '../@types/form';
 
 interface IThemeContext {
     background: IBackground;
@@ -25,6 +25,7 @@ interface IThemeProviderProps {
 const palette = {
     white: '#fff',
     black: '#000',
+    gray100: '#cfcccc',
     gray300: '#a6a4a4',
 };
 
@@ -32,7 +33,7 @@ const ThemeContext = createContext<IThemeContext>({} as IThemeContext);
 
 export function ThemeContextProvider({ children }: IThemeProviderProps) {
     const [background, setBackground] = useState<IBackground>({
-        type: 'solid',
+        type: BackgroundEnum.LINEAR,
         color: palette.gray300,
     });
 
@@ -60,7 +61,7 @@ export function ThemeContextProvider({ children }: IThemeProviderProps) {
             },
 
             poem: {
-                background: background,
+                background: background.color,
             },
         }),
         [background],

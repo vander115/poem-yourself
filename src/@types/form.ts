@@ -3,10 +3,22 @@ export interface ITabs {
     value: number;
     icon?: JSX.Element;
 }
+export enum BackgroundEnum {
+    SOLID = 'solid',
+    LINEAR = 'linear',
+    RADIAL = 'radial',
+}
 
-export type BackgroundType = 'solid' | 'linear' | 'radial';
+export type BackgroundType =
+    (typeof BackgroundEnum)[keyof typeof BackgroundEnum];
 
 export interface IBackground {
-    type: BackgroundType;
+    type: BackgroundEnum;
     color: string;
 }
+
+export type BackgroundTypeTabType = {
+    label: string;
+    value: BackgroundType;
+    color: string;
+};

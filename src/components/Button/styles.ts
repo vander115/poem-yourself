@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonContainer = styled.a`
+export const ButtonContainer = styled.button`
     text-decoration: none;
     cursor: pointer;
 
