@@ -20,3 +20,5 @@ export const PoemParagraphs = styled.span`
         padding: 0.25rem 0;
     }
 `;
+
+export const PoemAuthor = styled.p``;
